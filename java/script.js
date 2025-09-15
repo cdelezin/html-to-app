@@ -25,12 +25,13 @@ caption.addEventListener("mouseover", () => {
   caption.style.color = "red";
 });
 
-// Utiliser les boutons existants dans le HTML
+// Utiliser le bouton Shake/Stop unique
 const myImage = document.querySelector("img");
-const shakeButton = document.querySelector('input[value="Shake"]');
-const stopButton = document.querySelector('input[value="Stop"]');
+const shakeStopBtn = document.getElementById("shakeStopBtn");
 
-if (myImage && shakeButton && stopButton) {
-  shakeButton.onclick = () => myImage.classList.add("shake");
-  stopButton.onclick = () => myImage.classList.remove("shake");
+if (myImage && shakeStopBtn) {
+  shakeStopBtn.onclick = () => {
+    myImage.classList.toggle("shake");
+    shakeStopBtn.value = myImage.classList.contains("shake") ? "Stop" : "Shake";
+  };
 }
