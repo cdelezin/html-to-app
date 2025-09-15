@@ -25,21 +25,12 @@ caption.addEventListener("mouseover", () => {
   caption.style.color = "red";
 });
 
-//ajouter un bouton pour shake l'image et un autre pour l'arrêter en dessous de l'image
-let myImage = document.querySelector("img");
-let shakeButton = document.createElement("button");
-shakeButton.textContent = "Shake";
-myImage.after(shakeButton);
-shakeButton.addEventListener("click", () => {
-  myImage.classList.add("shake");
-});
-document.body.appendChild(shakeButton);
+// Utiliser les boutons existants dans le HTML
+const myImage = document.querySelector("img");
+const shakeButton = document.querySelector('input[value="Shake"]');
+const stopButton = document.querySelector('input[value="Stop"]');
 
-let stopButton = document.createElement("button");
-stopButton.textContent = "Stop";
-myImage.after(stopButton);
-stopButton.addEventListener("click", () => {
-  myImage.classList.remove("shake");
-});
-document.body.appendChild(stopButton);  
-
+if (myImage && shakeButton && stopButton) {
+  shakeButton.onclick = () => myImage.classList.add("shake");
+  stopButton.onclick = () => myImage.classList.remove("shake");
+}
